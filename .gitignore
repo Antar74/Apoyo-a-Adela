@@ -1,0 +1,5 @@
+materiales - no subir/
+node_modules/
+.DS_Store
+shots/
+.ruff_cache/

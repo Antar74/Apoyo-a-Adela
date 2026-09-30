@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+  Plantilla de la imagen para compartir (1200x630).
+
+  Para regenerarla:
+    1. Extraer el recorte de arte del video original
+         ffmpeg -ss 102 -i "materiales - no subir/APOYOAADELA VIDEO.mp4" \
+           -frames:v 1 -vf "crop=1920:1008:0:36,scale=1200:630" -q:v 2 \
+           assets/og/og-art.jpg
+    2. Servir con  python tools/serve.py 8124
+    3. Abrir http://127.0.0.1:8124/tools/og.html y capturar 1200x630
+    4. Guardar como assets/og/og.jpg  (JPEG calidad 88)
+    5. Borrar assets/og/og-art.jpg para no publicarlo
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    font-family: 'Libre Caslon Text', Georgia, serif;
+    background: #221A19;
+    position: relative;
+  }
+  .art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .scrim {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(88% 76% at 10% 84%, rgba(18,13,13,0.94) 0%, rgba(18,13,13,0.86) 44%, rgba(18,13,13,0) 100%),
+      linear-gradient(to bottom, rgba(18,13,13,0.32) 0%, rgba(18,13,13,0) 28%);
+  }
+  .content {
+    position: absolute; left: 72px; right: 72px; bottom: 62px;
+    color: #F6EFE3;
+  }
+  .eyebrow {
+    font-size: 17px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #CFC7BA; margin-bottom: 18px;
+  }
+  h1 {
+    font-size: 96px; line-height: 0.98; letter-spacing: -0.022em;
+    margin-bottom: 22px;
+  }
+  p { font-size: 27px; line-height: 1.45; color: #CFC7BA; max-width: 15em; }
+</style>
+</head>
+<body>
+  <img class="art" src="../assets/og/og-art.jpg" alt="">
+  <div class="scrim"></div>
+  <div class="content">
+    <div class="eyebrow">Adela Casacuberta</div>
+    <h1>Apoyo a Adela</h1>
+    <p>Una red para sostener su vida y su práctica artística.</p>
+  </div>
+</body>
+</html>

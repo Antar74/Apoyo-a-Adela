@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Apoyo a Adela — Adela Casacuberta</title>
+<meta name="description" content="Apoya la vida y la práctica artística de Adela Casacuberta. Una red de contribuciones mensuales para sostener sus procesos de rehabilitación y continuar su obra.">
+<meta name="author" content="Adela Casacuberta">
+<meta name="theme-color" content="#F0E7D7">
+<link rel="canonical" href="./">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_UY">
+<meta property="og:site_name" content="Apoyo a Adela">
+<meta property="og:title" content="Apoyo a Adela — Adela Casacuberta">
+<meta property="og:description" content="Apoya la vida y la práctica artística de Adela Casacuberta. Una red de contribuciones mensuales para sostener sus procesos de rehabilitación y continuar su obra.">
+<meta property="og:image" content="assets/og/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Detalle de una obra de Adela Casacuberta: círculo magenta y puntos amarillos sobre fondo marrón cálido.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Apoyo a Adela — Adela Casacuberta">
+<meta name="twitter:description" content="Apoya la vida y la práctica artística de Adela Casacuberta.">
+<meta name="twitter:image" content="assets/og/og.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap">
+<link rel="preload" href="assets/video/poster.jpg" as="image" fetchpriority="high">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<script>document.documentElement.className += ' js';</script>
+</head>
+<body>
+
+<a class="skip-link" href="#historia">Ir al contenido</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="#top">Apoyo a Adela</a>
+    <a class="site-header__cta" href="https://www.patreon.com/apoyoaAdela/about?l=de" target="_blank" rel="noopener noreferrer">
+      Apoyar<span class="u-sr-only"> a Adela en Patreon (se abre en una pestaña nueva)</span> <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ══ 01 · Apertura ══════════════════════════════════════════ -->
+  <section class="hero" id="hero" aria-labelledby="heroTitle">
+    <video
+      class="hero__video"
+      id="heroVideo"
+      poster="assets/video/poster.jpg"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="none"
+      aria-hidden="true"
+      tabindex="-1"></video>
+
+    <div class="hero__scrim" aria-hidden="true"></div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow">Adela Casacuberta</p>
+      <h1 class="hero__title" id="heroTitle">Apoyo a<br>Adela</h1>
+      <p class="hero__tagline">Una red para sostener su vida y su práctica artística.</p>
+      <a class="cta cta--hero" href="https://www.patreon.com/apoyoaAdela/about?l=de" target="_blank" rel="noopener noreferrer">
+        <span class="cta__label">Apoyar<span class="u-sr-only"> a Adela en Patreon (se abre en una pestaña nueva)</span></span>
+        <span class="cta__arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <span class="hero__scroll-label">Deslizar</span>
+      <span class="hero__scroll-line"></span>
+    </div>
+  </section>
+
+  <!-- ══ 02 · El documental + retrato ══════════════════════════ -->
+  <section class="film" id="pelicula" aria-labelledby="filmTitle">
+    <h2 class="u-sr-only" id="filmTitle">El documental sobre Adela Casacuberta</h2>
+
+    <div class="film__grid">
+      <div class="film__player">
+        <div class="player" data-player>
+          <video
+            class="player__video"
+            id="filmVideo"
+            poster="assets/video/documental-poster.jpg"
+            preload="none"
+            playsinline
+            aria-describedby="filmDesc">
+            <source src="assets/video/documental-720.mp4" type="video/mp4">
+            <p class="player__fallback">
+              Tu navegador no puede reproducir este video.
+              <a href="assets/video/documental-720.mp4">Descárgalo aquí</a>.
+            </p>
+          </video>
+
+          <p class="u-sr-only" id="filmDesc">
+            Documento de 10 minutos sobre la vida y la obra de Adela
+            Casacuberta, con sonido. Usa los controles para reproducir,
+            ajustar el volumen o ver a pantalla completa.
+          </p>
+
+          <div class="player__bar">
+            <button class="player__btn" type="button" data-action="play"
+                    aria-label="Reproducir el documental">
+              <svg class="player__icon player__icon--play" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M8 5.5v13l11-6.5z"/>
+              </svg>
+              <svg class="player__icon player__icon--pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M7.5 5h3.2v14H7.5zM13.3 5h3.2v14h-3.2z"/>
+              </svg>
+            </button>
+
+            <span class="player__time" data-time aria-hidden="true">0:00 / 10:10</span>
+
+            <label class="u-sr-only" for="filmSeek">Posición en el documental</label>
+            <input class="player__seek" id="filmSeek" type="range"
+                   min="0" max="100" step="0.1" value="0"
+                   aria-label="Posición en el documental">
+
+            <button class="player__btn" type="button" data-action="mute"
+                    aria-label="Silenciar" aria-pressed="false">
+              <svg class="player__icon player__icon--vol" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 9.5h3.4L12 5.4v13.2L7.4 14.5H4z"/>
+                <path class="player__wave" d="M15.2 9.1a4 4 0 0 1 0 5.8M17.8 6.5a7.6 7.6 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+              <svg class="player__icon player__icon--muted" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 9.5h3.4L12 5.4v13.2L7.4 14.5H4z"/>
+                <path d="M15.5 9.5l5 5M20.5 9.5l-5 5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </button>
+
+            <label class="u-sr-only" for="filmVolume">Volumen</label>
+            <input class="player__vol" id="filmVolume" type="range"
+                   min="0" max="1" step="0.05" value="1"
+                   aria-label="Volumen">
+
+            <button class="player__btn" type="button" data-action="fullscreen"
+                    aria-label="Ver a pantalla completa">
+              <svg class="player__icon player__icon--fs" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <svg class="player__icon player__icon--fsexit" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <figure class="film__portrait">
+        <img
+          src="assets/img/adela-retrato.jpg"
+          srcset="assets/img/adela-retrato-500.webp 500w,
+                  assets/img/adela-retrato-1000.webp 1000w,
+                  assets/img/adela-retrato-1687.webp 1687w"
+          sizes="(min-width: 900px) 30vw, 100vw"
+          width="1687" height="1687"
+          loading="lazy" decoding="async"
+          alt="Retrato en blanco y negro de Adela Casacuberta en su taller.">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ══ 03 · La historia ═══════════════════════════════════════ -->
+  <section class="story" id="historia" aria-labelledby="historiaTitle">
+    <div class="story__col">
+      <h2 class="u-sr-only" id="historiaTitle">Su historia</h2>
+
+      <div class="story__body">
+        <p class="story__lead reveal">Mi nombre es Adela Casacuberta. Nací en México, pero hace más de veinte años que vivo en Uruguay, donde me he dedicado al desarrollo cultural a través de numerosos proyectos. Soy artista y diseñadora. Desde niña siento fascinación por la pintura y particularmente por el color. He intentado crear y compartir un mundo personal en cuadros, instalaciones y esculturas que evocan el surgimiento de vida.</p>
+
+        <p class="reveal">Todos los días pongo todo mi empeño en desarrollar esa obra. Pero a los retos que vive todo artista se suma en mi caso una complicación particular. Hace 25 años que tengo esclerosis múltiple, una enfermedad degenerativa severa que hace que mi vida sea muy difícil y costosa. Tengo afectados muchos grupos musculares que comprometen mi movilidad, mi respiración y también el habla. Me desplazo en silla de ruedas. Y usando la mano izquierda, que es la única que puedo mover, trabajo en mi obra con el mismo cariño y dedicación que he puesto en ella siempre. Pero necesito asistencia permanente tanto para trabajar como para resolver cada pequeña acción del día.</p>
+
+        <p class="reveal">He contado, a lo largo de los años, con la ayuda de numerosos amigos y seres queridos, que me brindan apoyo de mil maneras. Hoy necesito centralizar toda esa ayuda en una única plataforma, donde pueda recibir su ayuda de un modo continuo, que me permita al mismo tiempo sostener procesos de rehabilitación y seguir creando. Una plataforma a través de la cual yo pueda comunicar a toda esta generosa red de mecenas mis avances, ofrecerles mi arte de un modo periódico y compartir los descubrimientos que encuentre en el camino.</p>
+
+        <p class="reveal">Para eso he lanzado <span class="story__wordmark">apoyoaadela</span>, una red de suscripción que permite hacer contribuciones mensuales por débito directo, según las posibilidades de cada uno, y en la que cada aporte se apreciará como el más valioso del mundo.</p>
+
+        <p class="reveal">A todos retribuiré con arte, con comentarios, con una invitación a compartir mi mundo. Es una red de solidaridad, pero también una comunidad de intereses, de aprendizaje, de búsqueda. Los invito a contribuir y a ayudarme a mantener mi calidad de vida. Prometo entregar toda mi capacidad al proceso creativo. Hay mucho que puedo hacer, con tu ayuda.</p>
+      </div>
+
+      <a class="cta cta--story reveal" href="https://www.patreon.com/apoyoaAdela/about?l=de" target="_blank" rel="noopener noreferrer">
+        <span class="cta__label">Apoyar a Adela<span class="u-sr-only"> en Patreon (se abre en una pestaña nueva)</span></span>
+        <span class="cta__arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══ 04 · La obra ═══════════════════════════════════════════ -->
+  <section class="work" id="obra" aria-labelledby="obraTitle">
+    <div class="work__inner">
+      <h2 class="u-sr-only" id="obraTitle">La obra</h2>
+
+      <figure class="work__item work__item--full reveal">
+        <img
+          src="assets/img/obra-01.jpg"
+          srcset="assets/img/obra-01-700.webp 700w,
+                  assets/img/obra-01-1200.webp 1200w,
+                  assets/img/obra-01-1800.webp 1800w"
+          sizes="(min-width: 900px) calc(100vw - 11rem), calc(100vw - 2.5rem)"
+          width="1800" height="1013"
+          loading="lazy" decoding="async"
+          alt="Detalle de una obra de Adela Casacuberta: un círculo magenta y puntos amarillos sobre un fondo marrón cálido.">
+      </figure>
+
+      <figure class="work__item work__item--right reveal">
+        <img
+          src="assets/img/obra-02.jpg"
+          srcset="assets/img/obra-02-700.webp 700w,
+                  assets/img/obra-02-1200.webp 1200w,
+                  assets/img/obra-02-1800.webp 1800w"
+          sizes="(min-width: 900px) 62vw, calc(100vw - 2.5rem)"
+          width="1800" height="1013"
+          loading="lazy" decoding="async"
+          alt="Obra de Adela Casacuberta: formas escultóricas rosadas sobre un fondo verde y coral.">
+      </figure>
+
+      <figure class="work__item work__item--left reveal">
+        <img
+          src="assets/img/obra-03.jpg"
+          srcset="assets/img/obra-03-500.webp 500w,
+                  assets/img/obra-03-700.webp 700w,
+                  assets/img/obra-03-922.webp 922w"
+          sizes="(min-width: 900px) 52vw, calc(100vw - 2.5rem)"
+          width="922" height="692"
+          loading="lazy" decoding="async"
+          alt="Obra de Adela Casacuberta: floraciones blancas de papel, apiladas y desplegadas en el taller.">
+      </figure>
+
+      <figure class="work__item work__item--mid reveal">
+        <img
+          src="assets/img/obra-04.jpg"
+          srcset="assets/img/obra-04-700.webp 700w,
+                  assets/img/obra-04-1200.webp 1200w,
+                  assets/img/obra-04-1800.webp 1800w"
+          sizes="(min-width: 900px) 72vw, calc(100vw - 2.5rem)"
+          width="1800" height="1013"
+          loading="lazy" decoding="async"
+          alt="Obra de Adela Casacuberta: pieza circular de fondo azul y rojo montada sobre un muro de ladrillo.">
+      </figure>
+
+      <figure class="work__item work__item--full reveal">
+        <img
+          src="assets/img/obra-05.jpg"
+          srcset="assets/img/obra-05-700.webp 700w,
+                  assets/img/obra-05-1200.webp 1200w,
+                  assets/img/obra-05-1800.webp 1800w"
+          sizes="(min-width: 900px) calc(100vw - 11rem), calc(100vw - 2.5rem)"
+          width="1800" height="1013"
+          loading="lazy" decoding="async"
+          alt="Obra de Adela Casacuberta: conjunto de piezas circulares en tonos rosa, verde y azul sobre una mesa.">
+      </figure>
+
+      <figure class="work__item work__item--right reveal">
+        <img
+          src="assets/img/obra-06.jpg"
+          srcset="assets/img/obra-06-700.webp 700w,
+                  assets/img/obra-06-1100.webp 1100w,
+                  assets/img/obra-06-1348.webp 1348w"
+          sizes="(min-width: 900px) 62vw, calc(100vw - 2.5rem)"
+          width="1348" height="808"
+          loading="lazy" decoding="async"
+          alt="Obra de Adela Casacuberta: floraciones rosadas de papelinstaladas sobre el césped.">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ══ 05 · Cierre ════════════════════════════════════════════ -->
+  <section class="outro" id="apoyar" aria-labelledby="outroTitle">
+    <div class="outro__inner">
+      <h2 class="outro__title" id="outroTitle">Apoyo a Adela</h2>
+      <p class="outro__tagline">Una red para sostener su vida y su práctica artística.</p>
+      <a class="cta cta--outro reveal" href="https://www.patreon.com/apoyoaAdela/about?l=de" target="_blank" rel="noopener noreferrer">
+        <span class="cta__label">Apoyar<span class="u-sr-only"> a Adela en Patreon (se abre en una pestaña nueva)</span></span>
+        <span class="cta__arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p>Adela Casacuberta · Montevideo, Uruguay</p>
+  </div>
+</footer>
+
+<a class="to-top" href="#top" data-to-top hidden>
+  <span class="to-top__label">Regresar al inicio</span>
+  <span class="to-top__arrow" aria-hidden="true">↑</span>
+</a>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
