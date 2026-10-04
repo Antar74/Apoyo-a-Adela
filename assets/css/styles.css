@@ -622,13 +622,13 @@ button { font: inherit; color: inherit; }
 
 /* Pie de imagen: el nombre de la obra, en versalitas espaciadas.
    6.1:1 sobre --ink, muy por encima de AA. */
-.work__item figcaption {
-  margin-top: 1rem;
-  font-size: var(--t-micro);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(240, 231, 215, 0.62);
-}
+   .work__item figcaption {
+    margin-top: 1rem;
+    font-size: var(--t-micro);
+    letter-spacing: 0;
+    text-transform: none;
+    color: rgba(240, 231, 215, 0.62);
+  }
 /* Retícula asimétrica — anchos y alineaciones alternas */
 @media (min-width: 900px) {
   .work__item--full  { width: 100%; }
