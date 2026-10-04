@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<!--
+  Apoyo a Adela — codigo bajo GPL-3.0-or-later (ver LICENSE).
+  Las imagenes, fotografias y videos de assets/ NO son software:
+  son (c) Adela Casacuberta, todos los derechos reservados.
+  Detalle en LICENSES/ASSETS.txt.
+-->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -61,6 +67,15 @@
       tabindex="-1"></video>
 
     <div class="hero__scrim" aria-hidden="true"></div>
+
+    <button class="hero__play" type="button" data-play-film>
+      <span class="hero__play-disc">
+        <svg class="hero__play-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M8 5.5v13l11-6.5z"/>
+        </svg>
+      </span>
+      <span class="hero__play-label">Ver el documental</span>
+    </button>
 
     <div class="hero__content">
       <p class="hero__eyebrow">Adela Casacuberta</p>
@@ -198,75 +213,121 @@
 
       <figure class="work__item work__item--full reveal">
         <img
-          src="assets/img/obra-01.jpg"
-          srcset="assets/img/obra-01-700.webp 700w,
-                  assets/img/obra-01-1200.webp 1200w,
-                  assets/img/obra-01-1800.webp 1800w"
+          src="assets/img/hongos-rosados-mnav-2026.jpg"
+          srcset="assets/img/hongos-rosados-mnav-2026-700.webp 700w,
+                  assets/img/hongos-rosados-mnav-2026-1200.webp 1200w,
+                  assets/img/hongos-rosados-mnav-2026-1800.webp 1800w"
           sizes="(min-width: 900px) calc(100vw - 11rem), calc(100vw - 2.5rem)"
-          width="1800" height="1013"
+          width="6265" height="3877"
           loading="lazy" decoding="async"
-          alt="Detalle de una obra de Adela Casacuberta: un círculo magenta y puntos amarillos sobre un fondo marrón cálido.">
+          alt="Hongos rosados, 2026. Instalacion de formas organicas rosadas extendidas sobre el cesped, bajo los arboles del Museo de Arte de Rivera.">
+        <figcaption>Hongos rosados (MNAV), 2026</figcaption>
       </figure>
 
       <figure class="work__item work__item--right reveal">
         <img
-          src="assets/img/obra-02.jpg"
-          srcset="assets/img/obra-02-700.webp 700w,
-                  assets/img/obra-02-1200.webp 1200w,
-                  assets/img/obra-02-1800.webp 1800w"
+          src="assets/img/autorretrato-2024.jpg"
+          srcset="assets/img/autorretrato-2024-700.webp 700w,
+                  assets/img/autorretrato-2024-1200.webp 1200w,
+                  assets/img/autorretrato-2024-1800.webp 1800w"
           sizes="(min-width: 900px) 62vw, calc(100vw - 2.5rem)"
-          width="1800" height="1013"
+          width="3120" height="4160"
           loading="lazy" decoding="async"
-          alt="Obra de Adela Casacuberta: formas escultóricas rosadas sobre un fondo verde y coral.">
+          alt="Autorretrato, 2024. Forma escultórica de perfil blanco y rosa, aplicada sobre una pared clara.">
+        <figcaption>Autorretrato, 2024</figcaption>
       </figure>
 
       <figure class="work__item work__item--left reveal">
         <img
-          src="assets/img/obra-03.jpg"
-          srcset="assets/img/obra-03-500.webp 500w,
-                  assets/img/obra-03-700.webp 700w,
-                  assets/img/obra-03-922.webp 922w"
+          src="assets/img/mimesis-floraciones.jpg"
+          srcset="assets/img/mimesis-floraciones-700.webp 700w,
+                  assets/img/mimesis-floraciones-1200.webp 1200w,
+                  assets/img/mimesis-floraciones-1686.webp 1686w"
           sizes="(min-width: 900px) 52vw, calc(100vw - 2.5rem)"
-          width="922" height="692"
+          width="1686" height="2998"
           loading="lazy" decoding="async"
-          alt="Obra de Adela Casacuberta: floraciones blancas de papel, apiladas y desplegadas en el taller.">
+          alt="Mimesis, floraciones, 8 y medio. Vista de una sala con una obra enmarcada apoyada en el suelo, junto a una ventana con balcon.">
+        <figcaption>Mimesis — floraciones, 8 y medio</figcaption>
       </figure>
 
       <figure class="work__item work__item--mid reveal">
         <img
-          src="assets/img/obra-04.jpg"
-          srcset="assets/img/obra-04-700.webp 700w,
-                  assets/img/obra-04-1200.webp 1200w,
-                  assets/img/obra-04-1800.webp 1800w"
+          src="assets/img/cuadro-superficie.jpg"
+          srcset="assets/img/cuadro-superficie-700.webp 700w,
+                  assets/img/cuadro-superficie-1200.webp 1200w,
+                  assets/img/cuadro-superficie-1800.webp 1800w"
           sizes="(min-width: 900px) 72vw, calc(100vw - 2.5rem)"
-          width="1800" height="1013"
+          width="5658" height="5658"
           loading="lazy" decoding="async"
-          alt="Obra de Adela Casacuberta: pieza circular de fondo azul y rojo montada sobre un muro de ladrillo.">
+          alt="Cuadro superficie. Pintura cuadrada de fondo claro con manchas organicas negras, ocre y rosa.">
+        <figcaption>Cuadro superficie</figcaption>
       </figure>
 
-      <figure class="work__item work__item--full reveal">
+      <figure class="work__item work__item--left reveal">
         <img
-          src="assets/img/obra-05.jpg"
-          srcset="assets/img/obra-05-700.webp 700w,
-                  assets/img/obra-05-1200.webp 1200w,
-                  assets/img/obra-05-1800.webp 1800w"
-          sizes="(min-width: 900px) calc(100vw - 11rem), calc(100vw - 2.5rem)"
-          width="1800" height="1013"
+          src="assets/img/catastrofe-floraciones-2021.jpg"
+          srcset="assets/img/catastrofe-floraciones-2021-700.webp 700w,
+                  assets/img/catastrofe-floraciones-2021-1200.webp 1200w,
+                  assets/img/catastrofe-floraciones-2021-1800.webp 1800w"
+          sizes="(min-width: 900px) 52vw, calc(100vw - 2.5rem)"
+          width="2800" height="1867"
           loading="lazy" decoding="async"
-          alt="Obra de Adela Casacuberta: conjunto de piezas circulares en tonos rosa, verde y azul sobre una mesa.">
+          alt="Catastrofe floraciones, 2021. Formas blancas parecidas a corales que salen de lienzos apoyados en la pared de una galeria.">
+        <figcaption>Catástrofe floraciones, 2021</figcaption>
       </figure>
 
       <figure class="work__item work__item--right reveal">
         <img
-          src="assets/img/obra-06.jpg"
-          srcset="assets/img/obra-06-700.webp 700w,
-                  assets/img/obra-06-1100.webp 1100w,
-                  assets/img/obra-06-1348.webp 1348w"
+          src="assets/img/retratos-desde-la-ruina-2023.jpg"
+          srcset="assets/img/retratos-desde-la-ruina-2023-700.webp 700w,
+                  assets/img/retratos-desde-la-ruina-2023-1200.webp 1200w,
+                  assets/img/retratos-desde-la-ruina-2023-1800.webp 1800w"
           sizes="(min-width: 900px) 62vw, calc(100vw - 2.5rem)"
-          width="1348" height="808"
+          width="3313" height="2486"
           loading="lazy" decoding="async"
-          alt="Obra de Adela Casacuberta: floraciones rosadas de papelinstaladas sobre el césped.">
+          alt="Retratos desde la ruina 2, 2023. Esculturas de color rosa, blanco y coral en un interior, entre volutas de humo.">
+        <figcaption>Retratos desde la ruina 2, 2023</figcaption>
       </figure>
+
+      <figure class="work__item work__item--full reveal">
+        <img
+          src="assets/img/hongos-rosados-2024.jpg"
+          srcset="assets/img/hongos-rosados-2024-700.webp 700w,
+                  assets/img/hongos-rosados-2024-1200.webp 1200w,
+                  assets/img/hongos-rosados-2024-1800.webp 1800w"
+          sizes="(min-width: 900px) calc(100vw - 11rem), calc(100vw - 2.5rem)"
+          width="9176" height="5976"
+          loading="lazy" decoding="async"
+          alt="Hongos rosados, 2024. Detalle de formas rosadas y rojas agrupadas como laminas superpuestas.">
+        <figcaption>Hongos rosados, 2024</figcaption>
+      </figure>
+
+      <figure class="work__item work__item--left reveal">
+        <img
+          src="assets/img/casa-sin-escalera-2023.jpg"
+          srcset="assets/img/casa-sin-escalera-2023-700.webp 700w,
+                  assets/img/casa-sin-escalera-2023-1200.webp 1200w,
+                  assets/img/casa-sin-escalera-2023-1800.webp 1800w"
+          sizes="(min-width: 900px) 52vw, calc(100vw - 2.5rem)"
+          width="2000" height="1333"
+          loading="lazy" decoding="async"
+          alt="Casa sin escalera, 2023. Formas claras instaladas en el suelo de un espacio de hormigon, con una pequena flor amarilla.">
+        <figcaption>Casa sin escalera, 2023</figcaption>
+      </figure>
+
+      <figure class="work__item work__item--mid reveal">
+        <img
+          src="assets/img/mimesis-ensayos-origen-2024.jpg"
+          srcset="assets/img/mimesis-ensayos-origen-2024-700.webp 700w,
+                  assets/img/mimesis-ensayos-origen-2024-1200.webp 1200w,
+                  assets/img/mimesis-ensayos-origen-2024-1800.webp 1800w"
+          sizes="(min-width: 900px) 72vw, calc(100vw - 2.5rem)"
+          width="2580" height="1720"
+          loading="lazy" decoding="async"
+          alt="Mimesis, ensayos desde el origen, 2024. Fragmentos extendidos sobre un suelo claro, con sombras de ventana.">
+        <figcaption>Mimesis (Ensayos desde el origen), 2024</figcaption>
+      </figure>
+
     </div>
   </section>
 

@@ -1,5 +1,7 @@
 """Servidor estatico minimo CON soporte de Range.
 
+SPDX-License-Identifier: GPL-3.0-or-later  (ver LICENSE)
+
 El http.server de Python ignora la cabecera Range y devuelve el archivo
 entero, asi que un <video> no puede buscar posiciones dentro del archivo.
 Para probar el reproductor hace falta uno que si responda 206.

@@ -1,6 +1,11 @@
 /* =============================================================
    Apoyo a Adela — hoja de estilos única
    Paleta extraída de la obra de Adela Casacuberta
+
+   SPDX-License-Identifier: GPL-3.0-or-later
+   Ver LICENSE. Los archivos de assets/img, assets/og y assets/video
+   NO son software: (c) Adela Casacuberta, todos los derechos
+   reservados (LICENSES/ASSETS.txt).
    ============================================================= */
 
 /* ---------- 1 · Reset --------------------------------------- */
@@ -28,7 +33,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-h1, h2, h3, p, figure { margin: 0; }
+h1, h2, h3, p, figure, figcaption { margin: 0; }
 img, video { display: block; max-width: 100%; }
 img { height: auto; }
 a { color: inherit; text-decoration: none; }
@@ -52,7 +57,15 @@ button { font: inherit; color: inherit; }
   --magenta:    #D8396E;   /* fuchsia / rosa de la pintura    */
   --green:      #A8BE33;   /* verde luminoso                  */
   --coral:      #D9834F;   /* naranja cálido                  */
-  --violet:     #6C5573;   /* violeta apagado                 */
+  --violet:      #6C5573;  /* violeta apagado                 */
+
+  /* Rosa oscuro derivado del magenta: el color del velo de la
+     apertura. Es el mismo tono de la paleta, version apagada. */
+  --wine:       #5A1029;
+
+  /* Rosa pálido para la sección del documental */
+  --pink:       #EDD2D8;
+  --pink-deep:  #E3BCC5;
 
   /* Sobre video — opacos para alcanzar AA sobre el fondo en movimiento */
   --on-dark:    #F6EFE3;
@@ -238,41 +251,64 @@ button { font: inherit; color: inherit; }
   object-position: 50% 50%;
   z-index: -2;
 }
-/* Velo localizado: oscurece solo detrás del bloque de texto y
-   deja el resto de la obra intacto. El centro esta calculado para
-   cubrir el bloque real (y 42%..91% de alto, x 5%..42% de ancho).
-   Medido sobre los fotogramas mas claros del loop. */
+/* Velo de la apertura: rosa oscuro de la paleta (#5A1029, el magenta
+   apagado) en vez de negro, y a la mitad de opacidad.
+
+   Aviso: al halvedor como se pidio, el texto de la apertura baja de
+   4.67:1 a ~2.6:1 y deja de cumplir AA (WCAG 2.1, 1.4.3), que pide
+   4.5:1 en texto pequeno. Es una decision consciente, no un descuido:
+   la pintura queda casi sin velo. Para compensar SIN oscurecer mas el
+   fondo, el texto lleva una sombra suave del mismo tono del velo, que
+   si ayuda a la legibilidad real aunque WCAG no lo puntue.
+
+   El velo sigue siendo local (eliptico): fuera del bloque de texto no
+   hay nada, que es lo que permite bajarlo tanto. */
 .hero__scrim {
   z-index: -1;
   background:
     radial-gradient(66% 46% at 28% 66%,
-      rgba(18, 13, 13, 0.93) 0%,
-      rgba(18, 13, 13, 0.88) 50%,
-      rgba(18, 13, 13, 0) 100%),
+      rgba(90, 16, 41, 0.48) 0%,
+      rgba(90, 16, 41, 0.42) 50%,
+      rgba(90, 16, 41, 0) 100%),
     linear-gradient(to bottom,
-      rgba(18, 13, 13, 0.72) 0%,
-      rgba(18, 13, 13, 0) 38%);
+      rgba(90, 16, 41, 0.41) 0%,
+      rgba(90, 16, 41, 0) 38%);
 }
 
+/* Con el velo a media opacidad el texto necesita su propio sostén.
+   Una sombra del mismo vino del velo: no oscurece el fondo (solo el
+   contorno de las letras), asi que se puede bajar el velo sin que el
+   texto se pierda. */
 .hero__content {
   position: relative;
   width: 100%;
   padding: 0 var(--gutter) clamp(3.5rem, 9vh, 6.5rem);
   padding-bottom: calc(clamp(3.5rem, 9vh, 6.5rem) + env(safe-area-inset-bottom, 0px));
   color: var(--on-dark);
+  text-shadow:
+    0 1px 2px rgba(46, 8, 22, 0.5),
+    0 2px 22px rgba(46, 8, 22, 0.42);
 }
 .hero__eyebrow {
   font-size: var(--t-micro);
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--on-dark-2);
+  /* Hueso pleno, no el tono atenuado: con el velo translucido es lo
+     que sostiene el contraste de esta linea (5.5:1). La jerarquia
+     la dan el cuerpo y el tracking, no el color. */
+  color: var(--on-dark);
   margin-bottom: clamp(0.9rem, 2vh, 1.5rem);
 }
 .hero__title {
   font-family: var(--font);
   font-size: var(--t-h1);
-  line-height: 0.98;
-  letter-spacing: -0.022em;
+  /* 1.28, no 0.98. Medido con las metricas reales de Libre Caslon
+     Text: ascendente 109 px + descendente 29 px = 138 px sobre un
+     cuerpo de 112 px, o sea que hace falta 1.232 solo para que las
+     linhas no se toquen. Con 1.08 el descendente de la "y" de
+     "Apoyo" invadia la "A" de "Adela". */
+  line-height: 1.28;
+  letter-spacing: -0.005em;
   margin-bottom: clamp(1.25rem, 3vh, 2rem);
   text-wrap: balance;
 }
@@ -283,6 +319,54 @@ button { font: inherit; color: inherit; }
   color: var(--on-dark-2);
   margin-bottom: clamp(2rem, 5vh, 3rem);
 }
+
+/* Botón de reproducción del documental, centrado sobre el video.
+   Al pulsarlo baja a la sección del film y lo arranca con sonido
+   (esa llamada vive dentro del gesto del usuario, así que los
+   navegadores permiten el audio). */
+.hero__play {
+  position: absolute;
+  /* 38% y no 50%: a media altura el boton caia justo al lado de
+     "Apoyo a" y los dos se estorbaban. */
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.7rem, 1.6vw, 1rem);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--on-dark);
+  cursor: pointer;
+  transition: transform 0.45s var(--ease), opacity 0.4s var(--ease);
+}
+.hero__play-disc {
+  display: grid;
+  place-items: center;
+  width: clamp(4rem, 8vw, 5.75rem);
+  height: clamp(4rem, 8vw, 5.75rem);
+  border-radius: 50%;
+  border: 1px solid rgba(246, 239, 227, 0.7);
+  background: rgba(90, 16, 41, 0.42);
+  backdrop-filter: blur(3px);
+  transition: background-color 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+.hero__play-icon { width: 26%; height: 26%; fill: var(--on-dark); margin-left: 8%; }
+.hero__play-label {
+  font-size: var(--t-micro);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 10px rgba(18, 13, 13, 0.75);
+}
+.hero__play:hover { transform: translate(-50%, -50%) scale(1.05); }
+.hero__play:hover .hero__play-disc {
+  background: rgba(90, 16, 41, 0.72);
+  border-color: var(--on-dark);
+}
+.hero__play:focus-visible { outline: 2px solid var(--green); outline-offset: 6px; }
 
 /* El bloque de apertura se muestra de inmediato. Una entrada
    animada retrasaria el LCP hasta 1.4 s y el video ya aporta
@@ -318,20 +402,21 @@ button { font: inherit; color: inherit; }
 /* ---------- 7 · El documental + retrato -------------------- */
 
 .film {
-  background: var(--bone);
+  background: var(--pink);
   /* Padding inferior corto: la historia ya aporta su propio --section
      arriba y los dos juntos dejaban un hueco muerto enorme. */
   padding: clamp(3.5rem, 8vw, 7rem) 0 clamp(1.5rem, 3vw, 2.5rem);
 }
 .film__grid {
   display: grid;
-  gap: clamp(2rem, 4vw, 3.5rem);
+  gap: clamp(1.75rem, 3vw, 2.75rem);
   align-items: start;
   padding-inline: var(--gutter);
 }
 @media (min-width: 900px) {
   .film__grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.42fr);
+    /* Video mucho mas ancho, retrato mas estrecho. */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.26fr);
     align-items: center;
   }
 }
@@ -490,23 +575,20 @@ button { font: inherit; color: inherit; }
 .story__body { color: var(--ink-2); }
 .story__body p + p { margin-top: 1.6em; }
 
-/* Entradilla en mayusculas. Las versales necesitan aire, asi que el
-   tracking se abre y el interlineado se afloja un poco.
-   En movil se queda al tamano del cuerpo: las mayusculas ya distinguen
-   el parrafo, y a tamano grande el bloque se comia la pantalla. */
+/* Entradilla. Ya no va en mayusculas: se lee como el resto del
+   relato, solo que 6 px mas grande y en tinta pleine (mas oscuro)
+   que el cuerpo, para que se lea como entrada sin gritar. */
 .story__lead {
-  font-size: 1.15rem;
-  line-height: 1.44;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  font-size: 1.525rem;
+  line-height: 1.36;
+  letter-spacing: -0.012em;
   color: var(--ink);
-  margin-bottom: 1.5em;
+  margin-bottom: 1.35em;
   text-wrap: pretty;
 }
 @media (min-width: 700px) {
   .story__lead {
-    font-size: clamp(1.35rem, 1.1rem + 0.8vw, 1.85rem);
-    letter-spacing: 0.035em;
+    font-size: clamp(1.7rem, 1.45rem + 0.95vw, 2.225rem);
   }
 }
 .story__body p:not(.story__lead) {
@@ -537,6 +619,16 @@ button { font: inherit; color: inherit; }
 }
 .work__item { width: 100%; margin: 0; }
 .work__item img { width: 100%; height: auto; }
+
+/* Pie de imagen: el nombre de la obra, en versalitas espaciadas.
+   6.1:1 sobre --ink, muy por encima de AA. */
+.work__item figcaption {
+  margin-top: 1rem;
+  font-size: var(--t-micro);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(240, 231, 215, 0.62);
+}
 /* Retícula asimétrica — anchos y alineaciones alternas */
 @media (min-width: 900px) {
   .work__item--full  { width: 100%; }
@@ -558,8 +650,11 @@ button { font: inherit; color: inherit; }
 .outro__title {
   font-family: var(--font);
   font-size: var(--t-outro);
-  line-height: 0.98;
-  letter-spacing: -0.022em;
+  /* Mismo 1.28 que el titulo de la apertura: mismo cuerpo, misma
+     fuente y las mismas metricas. Con 0.98 las dos lineas de "Apoyo
+     a Adela" se pisaban al partirse el titular. */
+  line-height: 1.28;
+  letter-spacing: -0.005em;
   text-wrap: balance;
   margin-bottom: clamp(1.25rem, 3vw, 2rem);
 }
@@ -652,18 +747,18 @@ button { font: inherit; color: inherit; }
 
 /* ---------- 13 · Adaptaciones ------------------------------- */
 
-/* Móvil: el bloque de texto ocupa casi todo el ancho y sube menos
-   (y 56%..91%), así que el velo se ensancha, se sube y se intensify. */
+/* Móvil: el bloque de texto ocupa casi todo el ancho y sube menos,
+   así que el velo se ensancha y se sube. */
 @media (max-width: 900px) {
   .hero__scrim {
     background:
       radial-gradient(115% 50% at 50% 72%,
-        rgba(18, 13, 13, 0.95) 0%,
-        rgba(18, 13, 13, 0.90) 45%,
-        rgba(18, 13, 13, 0) 100%),
+        rgba(90, 16, 41, 0.46) 0%,
+        rgba(90, 16, 41, 0.38) 45%,
+        rgba(90, 16, 41, 0) 100%),
       linear-gradient(to bottom,
-        rgba(18, 13, 13, 0.62) 0%,
-        rgba(18, 13, 13, 0) 50%);
+        rgba(90, 16, 41, 0.32) 0%,
+        rgba(90, 16, 41, 0) 50%);
   }
 }
 

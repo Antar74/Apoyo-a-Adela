@@ -1,0 +1,96 @@
+APOYO A ADELA — DERECHOS SOBRE LAS IMAGENES
+============================================
+
+Este archivo NO es una licencia de software. Es una reserva de derechos
+sobre el material visual del sitio.
+
+Que este repositorio este bajo GPL v3 NO significa que las imagenes, las
+fotografias y los videos esten bajo GPL.
+
+
+1. TITULAR DE LOS DERECHOS
+-------------------------
+
+Los archivos de `assets/img/`, `assets/og/` y `assets/video/` son obra de
+Adela Casacuberta (Montevideo, Uruguay) y se encuentran protegidos por la
+ley de derechos de autor.
+
+Titular:      Adela Casacuberta
+Obra:         "Apoyo a Adela" - sitio de apoyo
+
+Contenido con derechos de autor:
+
+  assets/img/hongos-rosados-mnav-2026.*     Hongos rosados (MNAV), 2026
+  assets/img/autorretrato-2024.*            Autorretrato, 2024
+  assets/img/mimesis-floraciones.*           Mimesis - floraciones, 8 y medio
+  assets/img/cuadro-superficie.*             Cuadro superficie
+  assets/img/catastrofe-floraciones-2021.*   Catastrofe floraciones, 2021
+  assets/img/retratos-desde-la-ruina-2023.*  Retratos desde la ruina 2, 2023
+  assets/img/hongos-rosados-2024.*           Hongos rosados, 2024
+  assets/img/casa-sin-escalera-2023.*        Casa sin escalera, 2023
+  assets/img/mimesis-ensayos-origen-2024.*   Mimesis (Ensayos desde el origen), 2024
+  assets/img/adela-retrato.*                 Retrato de Adela Casacuberta
+  assets/img/favicon.svg
+  assets/og/og.jpg                           Imagen para compartir
+  assets/video/                              Bucle de apertura y documental
+
+Las imagenes de la galeria proceden de los archivos originales de la
+artista. Las variantes .webp y los .jpg de 1200 px son reducciones de esos
+mismos archivos: no son obras distintas.
+
+
+2. QUE SE APLICA Y QUE NO
+-------------------------
+
+  SI    index.html, assets/css/, assets/js/, tools/
+         -> Licencia GPL-3.0-or-later. Ver LICENSES/GPL-3.0-or-later.txt
+
+  NO    assets/img/     (retrato, obras, favicon)
+         assets/og/      (imagen para compartir)
+         assets/video/   (bucle de apertura y documental)
+
+  NO    El material visual, en ningun caso.
+
+
+3. QUE SE PUEDE HACER CON LAS IMAGENES
+--------------------------------------
+
+  Permitido
+
+    - Verlas en el sitio donde estan publicadas.
+    - Verlas en privado, descargarlas, imprimirlas.
+    - Citar la obra y dar credito a Adela Casacuberta.
+
+  NO permitido, sin permiso escrito de la titular
+
+    - Copiarlas, publicarlas o redistribuirlas.
+    - Usarlas en otro sitio, impresion, red social o campana.
+    - Modificarlas, recortarlas o tratarlas digitalmente.
+    - Incluirlas en otra licencia (incluida la GPL).
+    - Usar las imagenes con fines comerciales, de entrenamiento de
+      modelos de IA o de conjunto de datos.
+
+
+4. NOTA SOBRE LAS IMAGENES
+-------------------------
+
+Las nueve imagenes de la seccion "La obra" son los archivos originales
+entregados por la artista, reducidos y convertidos a WebP para la web. No
+se recortaron ni se reencuadraron: conservan sus proporciones originales.
+
+Los textos `alt` del sitio describen cada obra e incluyen su titulo y su
+ano. Se escribieron en espanol, sin acentos, por el mismo criterio que
+los comentarios del codigo en este repositorio.
+
+
+5. CONTACTO
+-----------
+
+Para cualquier uso de las imagenes: a traves del enlace "Apoyar" del sitio,
+que dirige a la pagina de Patreon de la red de apoyo.
+
+
+================================================================
+(El texto de la licencia GPL v3 se conserva integro y sin modificar en
+LICENSES/GPL-3.0-or-later.txt. Ese archivo cubre solo el codigo.)
+================================================================

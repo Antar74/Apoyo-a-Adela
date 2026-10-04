@@ -3,6 +3,11 @@
    1. Carga del video solo si el contexto lo permite
    2. La cabecera cambia de estado al salir de la apertura
    3. Aparición suave del texto y las obras al desplazarse
+
+   SPDX-License-Identifier: GPL-3.0-or-later
+   Ver LICENSE. Los archivos de assets/img, assets/og y assets/video
+   NO son software: (c) Adela Casacuberta, todos los derechos
+   reservados (LICENSES/ASSETS.txt).
    ============================================================= */
 (function () {
   'use strict';
@@ -202,6 +207,65 @@
     paintSeek();
   }
 
+  /* ---------- Boton del documental ------------------------------- */
+
+  /* El boton que esta sobre el video de la apertura lleva a la
+     seccion del documental y lo arranca con sonido.
+
+     El destino no es scrollIntoView sobre la seccion: eso alinea el
+     borde superior de la seccion con el borde superior de la
+     ventana, y el reproductor queda por debajo del pliegue en
+     pantallas bajas. Se calcula el desplazamiento que deja el
+     reproductor ENTERO a la vista, con un margen para la cabecera.
+
+     El play() se llama DENTRO del gesto del usuario a proposito: si
+     se difiriese hasta terminar el desplazamiento, el navegador ya no
+     lo contaria como gesto y bloquearia el audio. */
+
+  function initPlayFilm() {
+    var button = document.querySelector('[data-play-film]');
+    var film = document.getElementById('pelicula');
+    var video = document.getElementById('filmVideo');
+    if (!button || !film || !video) return;
+
+    button.addEventListener('click', function () {
+      var player = video.closest('.player') || video;
+      var box = player.getBoundingClientRect();
+      var header = document.getElementById('siteHeader');
+
+      /* Espacio libre entre la cabecera fija y el borde inferior.
+         Sin holgura extra: el reproductor es de 16:9 mas la barra y en
+         ventanas bajas cada pixel cuenta para que quepa entero. */
+      var top0 = header ? header.offsetHeight : 0;
+      var bottom0 = window.innerHeight;
+      var disponible = bottom0 - top0;
+
+      /* Centro dentro de ese espacio; si el reproductor es mas alto
+         que el espacio, se alinea arriba y punto. */
+      var destino = window.scrollY + box.top - top0 -
+                    Math.max(0, (disponible - box.height) / 2);
+
+      /* Nunca por encima del comienzo de la seccion: si el sitio ya
+         esta donde toca, no se sube para "centrar". */
+      var inicioPelicula = film.getBoundingClientRect().top + window.scrollY;
+      if (destino < inicioPelicula) destino = inicioPelicula;
+
+      window.scrollTo({
+        top: destino,
+        behavior: reduceMotion.matches ? 'auto' : 'smooth'
+      });
+
+      /* play() DENTRO del gesto del usuario: si se difiriese hasta
+         terminar el desplazamiento, el navegador ya no lo contaria
+         como gesto y bloquearia el audio. */
+      video.muted = false;
+      var attempt = video.play();
+      if (attempt && typeof attempt.catch === 'function') {
+        attempt.catch(function () { /* el póster se queda */ });
+      }
+    });
+  }
+
   /* ---------- Regresar al inicio -------------------------------- */
 
   /* Nace oculto y aparece al salir de la apertura. El salto lo hace
@@ -321,6 +385,7 @@
   function boot() {
     initVideo();
     initPlayer();
+    initPlayFilm();
     initHeader();
     initToTop();
     initReveal();

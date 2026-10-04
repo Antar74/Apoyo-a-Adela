@@ -5,14 +5,18 @@ contraste cambia con cada fotograma. Este script mide el PEOR caso: toma
 capturas de la pagina con el texto oculto y calcula la razon de
 contraste de cada bloque contra los colores reales del texto.
 
+OJO: con el velo actual (a media opacidad, por decision consciente) el
+sitio NO cumple AA en la apertura. El script sigue sirviendo para medir
+cuanto se ha perdido y para comprobar que el resto de la pagina va bien.
+
 Uso
 ---
   1) Sirve el sitio y captura fotogramas del bucle con el texto oculto.
      Ejemplo con Playwright (390x844):
 
-       for t in [0.5, 2, 4, 6, 8, 10, 12, 13.5]:
-         # pausar el video en t, ocultar .hero__content / .site-header,
-         # guardar shots/bg-mobile-<t>.png
+       for t in [0.5, 3, 6, 9, 12, 13.5]:
+         # pausar el video en t, ocultar .hero__content / .site-header
+         # / .hero__play / .to-top, guardar shots/bg-mobile-<t>.png
          ...
 
   2) python tools/contrast-check.py "shots/bg-mobile-*.png"
@@ -27,16 +31,19 @@ import sys
 from PIL import Image
 
 # Colores reales, de assets/css/styles.css
-ON_DARK = (246, 239, 227)  # --on-dark   titulo y CTA
-ON_DARK_2 = (207, 199, 186)  # --on-dark-2 eyebrow y bajada
+ON_DARK = (246, 239, 227)  # --on-dark   eyebrow, titulo y CTA
+ON_DARK_2 = (207, 199, 186)  # --on-dark-2 bajada
 
-# Rectangulos del bloque de texto sobre un viewport de 390x844 (movil).
-# Si el diseno cambia, vuelve a medirlos con getBoundingClientRect().
+# Rectangulos REALES de cada linea de texto del bloque de la apertura,
+# sobre un viewport de 390x844 (movil). Obtenidos con
+# Range.getClientRects(), NO con la caja del bloque: medir sobre el
+# espacio vacio a la derecha del "eyebrow" daba un falso negativo de
+# casi 3:1. Si el diseno cambia, hay que volver a medirlos asi.
 BLOCKS = {
-    "eyebrow": ((18, 494, 372, 512), ON_DARK_2, 4.5),
-    "titulo": ((18, 528, 372, 626), ON_DARK, 3.0),
-    "tagline": ((18, 646, 372, 694), ON_DARK_2, 4.5),
-    "cta": ((18, 736, 372, 774), ON_DARK, 4.5),
+    "eyebrow": ((20, 445, 216, 461), ON_DARK, 4.5),
+    "titulo": ((20, 482, 221, 612), ON_DARK, 3.0),
+    "tagline": ((20, 641, 305, 689), ON_DARK_2, 4.5),
+    "cta": ((20, 733, 130, 760), ON_DARK, 4.5),
 }
 
 AAA = 7.0
